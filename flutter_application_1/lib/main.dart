@@ -1,9 +1,9 @@
-import 'package:flutter/foundation.dart';
+//import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import "dart:math" as math;
 //import "dart:developer" as dev;
 
-var bars = [
+var quotes = [
   '"Which English teacher has 7 kids" "Kanye West"',
   '"I want to hurry quicklier"',
   '"What is the burning point of an eagle"',
@@ -25,7 +25,7 @@ var bars = [
   '"I like to eat your dog"',
   '"Cogidubnus in whale"',
   '"I could fowl you"',
-  '"These marsupials give birht to offspring that aren\'t fully cooked"',
+  '"These marsupials give birth to offspring that aren\'t fully cooked"',
   '"I have to mew it\'s elegant"',
   '"Your big-ass forehead reflects too much light"',
   '"You wanna know what\'s a nerd moment? This extremely sexy calculator"',
@@ -51,7 +51,6 @@ var bars = [
   '"Sometimes you just gotta die; these guys are dying"',
   '"You hit me with that!" "Aww :( Do you want me to hit you with this side it hurts more"',
   '"We worship SOCIAL MEDIA now we worship TAYLOR SWIFT on TIKTOK"',
-  '"They\'re having not normal Chinese babies they\'re having island Chinese babies"',
   '"Tell your mom I\'m single and ready to mingle"',
   '""Na"like I\'m going to GNAW YOUR KNEECAPS OFF IF YOU DON\'T GET THSE VOWELS RIGHT"',
   '"Lowkey craving some liquid IV right now 🤤"',
@@ -61,7 +60,7 @@ var bars = [
   '"Would you rather eat fifty million desks or drink a mango smoothie"',
   '"No breathing until Christmas"',
   '"Jefferetary Secretary"',
-  '"If a square and a triangle give birth to a circle who\'s the father"'
+  '"If a square and a triangle give birth to a circle who\'s the father"',
   '"Was he born first or was he given birth to"',
   '"Sorry I\'m just imagining you as a bobby pin"',
   '"Bones 🥰🔥😛"',
@@ -69,45 +68,95 @@ var bars = [
 ];
 var rand = math.Random();
 
-void main()=>runApp(const MaterialApp(
-    title: "quotes aww",
-    home: MyWidget()
-  ));
+void main()=>runApp(App());
 
-
-class MyWidget extends StatefulWidget{
-  const MyWidget({super.key});
+class App extends StatelessWidget{
+  const App({super.key});
   @override
-  State<MyWidget> createState()=>_MyWidgetState();
+  Widget build(BuildContext context){
+    return MaterialApp(
+      title: "Inspirational Quotes ❤️",
+      home:const Home()
+    );
+  }
 }
 
-class _MyWidgetState extends State<MyWidget>{
-  String quote = bars[rand.nextInt(bars.length)];
+class Home extends StatelessWidget{
+  const Home({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 231, 252, 253),
+      
+      body: Stack(
+          children: <Widget>[
+            Positioned.fill(
+              child: Image(
+                image: AssetImage("imgs/beachbg.jpg"),
+                fit: BoxFit.fill
+              ),
+            ),
+            Scaffold(
+              backgroundColor: const Color.fromARGB(167, 250, 231, 253),
+              body: Column(
+                children: <Widget>[
+                  Center(),
+                  Title(),
+                  QuoteHolder(),
+                ],
+              )
+            )
+          ],
+        )
+      //),
+    );
+  }
+}
+
+class QuoteHolder extends StatefulWidget{
+  const QuoteHolder({super.key});
+  @override
+  State<QuoteHolder> createState()=>_QuoteHolderState();
+}
+
+class _QuoteHolderState extends State<QuoteHolder>{
+  String quote = quotes[rand.nextInt(quotes.length)];
 
   void newQuote(){
     setState((){
-      quote=bars[rand.nextInt(bars.length)];
+      quote=quotes[rand.nextInt(quotes.length)];
     });
   }
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Text(
-              quote,
-              textDirection: TextDirection.ltr
+    return Container(
+      //width: 700,
+      color: const Color.fromARGB(255, 219, 240, 255),
+      child: Column(
+        children: <Widget>[
+          Text(
+            quote,
+            textDirection: TextDirection.ltr,
+            style: TextStyle(
+              fontSize: 36,
             ),
-            ElevatedButton(
-              onPressed: newQuote, 
-              child: Text("change")
-            )
-          ],
-        )
+          ),
+          ElevatedButton(
+            onPressed: newQuote, 
+            child: Text("New Quote")
+          )
+        ],
       )
     );
+  }
+}
+
+class Title extends StatelessWidget{
+  const Title({super.key});
+  @override
+  Widget build(BuildContext build){
+    return Text("Inspirational Quotes ⭐🫰", textDirection: TextDirection.ltr,);
   }
 }
 
