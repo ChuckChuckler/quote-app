@@ -1,0 +1,12 @@
+# "Inspirational" Quote Generator
+A simple, aesthetic, single-page quote generator that generates inspirational-- ...inspirational...? quotes!
+Really, all the quotes are either silly, incomprehensible, or borderline mean. Nothing inspirational here (but you do you).
+
+Made this project as my first introduction to Dart/Flutter. It's very noncomplex, but my best method of learning is hands-on.
+
+## Tech Stack
+Built with Dart/Flutter.
+
+## Demo
+[Web Deployment](https://quote-app-1cdu.vercel.app/)
+[Desktop Download](https://drive.google.com/file/d/1aE6v-Cs2W64JN7O5iofCNXDITX4UAtsJ/view?usp=sharing)
