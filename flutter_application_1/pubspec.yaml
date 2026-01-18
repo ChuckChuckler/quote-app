@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^7.0.2
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:

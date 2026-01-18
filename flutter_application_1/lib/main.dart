@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import "dart:math" as math;
 import 'package:google_fonts/google_fonts.dart';
+import "package:auto_size_text/auto_size_text.dart";
 //import "dart:developer" as dev;
 
 var quotes = [
@@ -26,7 +27,6 @@ var quotes = [
   '"I like to eat your dog"',
   '"Cogidubnus in whale"',
   '"I could fowl you"',
-  '"These marsupials give birth to offspring that aren\'t fully cooked"',
   '"I have to mew it\'s elegant"',
   '"Your big-ass forehead reflects too much light"',
   '"You wanna know what\'s a nerd moment? This extremely sexy calculator"',
@@ -67,7 +67,14 @@ var quotes = [
   '"Bones 🥰🔥😛"',
   '"I am desk"'
 ];
+var quotesTemp = [];
 var rand = math.Random();
+
+void fillout(){
+  for(int i = 0; i < quotes.length; i++){
+    quotesTemp.add(quotes[i]);
+  }
+}
 
 void main()=>runApp(App());
 
@@ -86,6 +93,7 @@ class Home extends StatelessWidget{
   const Home({super.key});
   @override
   Widget build(BuildContext context) {
+    fillout();
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 231, 252, 253),
       
@@ -103,7 +111,8 @@ class Home extends StatelessWidget{
                 children: <Widget>[
                   Center(),
                   Title(),
-                  Text("∗ ࣪ ˖༺ ♡ ༻˖ ࣪ ∗",
+                  AutoSizeText("∗ ࣪ ˖༺ ♡ ༻˖ ࣪ ∗",
+                    maxLines: 1,
                     style: TextStyle(
                       fontSize: 30
                     )
@@ -111,7 +120,8 @@ class Home extends StatelessWidget{
                   SizedBox(height: 20,),
                   QuoteHolder(),
                   SizedBox(height: 20,),
-                  Text("⊹｡⁖✦ ˖ ⊹｡˖ ✧ ⊹｡⁖ °✦",
+                  AutoSizeText("⊹｡⁖✦ ˖ ⊹｡˖ ✧ ⊹｡⁖ °✦",
+                    maxLines: 1,
                     style: TextStyle(
                       fontSize: 30
                     )
@@ -137,7 +147,11 @@ class _QuoteHolderState extends State<QuoteHolder>{
 
   void newQuote(){
     setState((){
-      quote=quotes[rand.nextInt(quotes.length)];
+      if(quotesTemp.isEmpty){
+        fillout();
+      }
+      quotesTemp.remove(quote);
+      quote=quotesTemp[rand.nextInt(quotesTemp.length)];
     });
   }
 
@@ -155,9 +169,10 @@ class _QuoteHolderState extends State<QuoteHolder>{
         children: <Widget>[
           Align(
             alignment: Alignment.topCenter,
-            child: Text(
+            child: AutoSizeText(
             quote,
             textDirection: TextDirection.ltr,
+            maxLines: 2,
             style: GoogleFonts.jacquesFrancois(
               fontSize: 36,
             ),
@@ -190,9 +205,10 @@ class Title extends StatelessWidget{
   const Title({super.key});
   @override
   Widget build(BuildContext build){
-    return Text(
+    return AutoSizeText(
       "Inspirational Quotes", 
       textDirection: TextDirection.ltr,
+      maxLines: 1,
       style: GoogleFonts.italianno(
         fontSize: 100
       )
