@@ -103,7 +103,19 @@ class Home extends StatelessWidget{
                 children: <Widget>[
                   Center(),
                   Title(),
+                  Text("∗ ࣪ ˖༺ ♡ ༻˖ ࣪ ∗",
+                    style: TextStyle(
+                      fontSize: 30
+                    )
+                  ),
+                  SizedBox(height: 20,),
                   QuoteHolder(),
+                  SizedBox(height: 20,),
+                  Text("⊹｡⁖✦ ˖ ⊹｡˖ ✧ ⊹｡⁖ °✦",
+                    style: TextStyle(
+                      fontSize: 30
+                    )
+                  )
                 ],
               )
             )
@@ -134,32 +146,38 @@ class _QuoteHolderState extends State<QuoteHolder>{
     return Container(
       width: 800,
       height: 300,
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(40),
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 219, 240, 255),
         borderRadius: BorderRadius.circular(30)
       ),
-      child: Column(
+      child: Stack(
         children: <Widget>[
-          Text(
+          Align(
+            alignment: Alignment.topCenter,
+            child: Text(
             quote,
             textDirection: TextDirection.ltr,
             style: GoogleFonts.jacquesFrancois(
               fontSize: 36,
             ),
             textAlign: TextAlign.center,
+          )
           ),
-          SizedBox(
-            width: 600,
-            height: 65,
-            child: ElevatedButton(
-              onPressed: newQuote, 
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.black
-              ),
-              
-              child: Text("New Quote"),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: SizedBox(
+              width: 600,
+              height: 65,
+              child: ElevatedButton(
+                onPressed: newQuote, 
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black
+                ),
+                
+                child: Text("New Quote"),
+              )
             )
           )
         ],
