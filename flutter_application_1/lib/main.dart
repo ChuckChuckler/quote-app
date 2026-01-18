@@ -1,6 +1,7 @@
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import "dart:math" as math;
+import 'package:google_fonts/google_fonts.dart';
 //import "dart:developer" as dev;
 
 var quotes = [
@@ -131,20 +132,35 @@ class _QuoteHolderState extends State<QuoteHolder>{
   @override
   Widget build(BuildContext context){
     return Container(
-      //width: 700,
-      color: const Color.fromARGB(255, 219, 240, 255),
+      width: 800,
+      height: 300,
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 219, 240, 255),
+        borderRadius: BorderRadius.circular(30)
+      ),
       child: Column(
         children: <Widget>[
           Text(
             quote,
             textDirection: TextDirection.ltr,
-            style: TextStyle(
+            style: GoogleFonts.jacquesFrancois(
               fontSize: 36,
             ),
+            textAlign: TextAlign.center,
           ),
-          ElevatedButton(
-            onPressed: newQuote, 
-            child: Text("New Quote")
+          SizedBox(
+            width: 600,
+            height: 65,
+            child: ElevatedButton(
+              onPressed: newQuote, 
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black
+              ),
+              
+              child: Text("New Quote"),
+            )
           )
         ],
       )
@@ -156,7 +172,13 @@ class Title extends StatelessWidget{
   const Title({super.key});
   @override
   Widget build(BuildContext build){
-    return Text("Inspirational Quotes ⭐🫰", textDirection: TextDirection.ltr,);
+    return Text(
+      "Inspirational Quotes", 
+      textDirection: TextDirection.ltr,
+      style: GoogleFonts.italianno(
+        fontSize: 100
+      )
+    );
   }
 }
 
