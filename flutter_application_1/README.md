@@ -8,3 +8,5 @@ Made this project as my first introduction to Dart/Flutter. It's very noncomplex
 Built with Dart/Flutter.
 
 ## Demo
+[Web Deployment](https://quote-app-1cdu.vercel.app/)
+[Desktop Download](https://drive.google.com/file/d/1aE6v-Cs2W64JN7O5iofCNXDITX4UAtsJ/view?usp=sharing)
